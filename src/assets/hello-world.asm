@@ -29,7 +29,7 @@ WaitVBlank:
 	; Copy the tile data
 	ld de, Tiles
 	ld hl, $9000
-	ld bc, Tiles.End - Tiles
+	ld bc, TilesEnd - Tiles
 CopyTiles:
 ; ANCHOR: memcpy_first_two
 	ld a, [de]
@@ -45,7 +45,7 @@ CopyTiles:
 	; Copy the tilemap
 	ld de, Tilemap
 	ld hl, $9800
-	ld bc, Tilemap.End - Tilemap
+	ld bc, TilemapEnd - Tilemap
 CopyTilemap:
 	ld a, [de]
 	ld [hli], a
@@ -71,7 +71,6 @@ Done:
 
 SECTION "Tile data", ROM0
 
-; ANCHOR: tiles
 Tiles:
 	db $00,$ff, $00,$ff, $00,$ff, $00,$ff, $00,$ff, $00,$ff, $00,$ff, $00,$ff
 	db $00,$ff, $00,$80, $00,$80, $00,$80, $00,$80, $00,$80, $00,$80, $00,$80
@@ -143,12 +142,10 @@ Tiles:
 	db $54,$ff, $aa,$ff, $54,$ff, $aa,$ff, $54,$ff, $aa,$ff, $54,$ff, $00,$ff
 	db $15,$ff, $2a,$ff, $15,$ff, $0a,$ff, $15,$ff, $0a,$ff, $01,$ff, $00,$ff
 	db $01,$ff, $80,$ff, $01,$ff, $80,$ff, $01,$ff, $80,$ff, $01,$ff, $00,$ff
-.End:
-; ANCHOR_END: tiles
+TilesEnd:
 
 SECTION "Tilemap", ROM0
 
-; ANCHOR: tilemap
 Tilemap:
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,  0,0,0,0,0,0,0,0,0,0,0,0
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,  0,0,0,0,0,0,0,0,0,0,0,0
@@ -168,5 +165,4 @@ Tilemap:
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,  0,0,0,0,0,0,0,0,0,0,0,0
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,  0,0,0,0,0,0,0,0,0,0,0,0
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,  0,0,0,0,0,0,0,0,0,0,0,0
-.End:
-; ANCHOR_END: tilemap
+TilemapEnd:
