@@ -19,7 +19,7 @@ EntryPoint:
 WaitVBlank:
 	ld a, [rLY]
 	cp 144
-	jr c, WaitVBlank
+	jp c, WaitVBlank
 
 	; Turn the LCD off
 	ld a, 0
@@ -39,7 +39,7 @@ CopyTiles:
 	dec bc
 	ld a, b
 	or a, c
-	jr nz, CopyTiles
+	jp nz, CopyTiles
 ; ANCHOR_END: memcpy
 
 	; Copy the tilemap
@@ -53,7 +53,7 @@ CopyTilemap:
 	dec bc
 	ld a, b
 	or a, c
-	jr nz, CopyTilemap
+	jp nz, CopyTilemap
 
 	; Turn the LCD on
 	ld a, LCDC_ON | LCDC_BG_ON
@@ -66,7 +66,7 @@ CopyTilemap:
 ; ANCHOR_END: bgp_write
 
 Done:
-	jr Done
+	jp Done
 
 
 SECTION "Tile data", ROM0
